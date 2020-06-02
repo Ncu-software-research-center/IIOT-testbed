@@ -34,4 +34,4 @@ VM:
 
 ## Usage
 
-* [Testbed Usage](https://github.com/Airwavess/testbed/tree/master/documents)
+* [Testbed Usage](./documents)
