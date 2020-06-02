@@ -1,0 +1,1076 @@
+{
+    "profile_name": "profile1",
+    "version": "1.0.0",
+    "define_qos": {
+        "qos1": {
+            "user_data": {
+                "value": ""
+            },
+            "topic_data": {
+                "value": ""
+            },
+            "group_data": {
+                "value": ""
+            },
+            "transport_priority": {
+                "value": 0
+            },
+            "lifespan": {
+                "duration": {
+                    "sec": 2147483647,
+                    "nanosec": 2147483647
+                }
+            },
+            "presentation": {
+                "kind": "instance",
+                "coherent_access": false,
+                "ordered_access": false
+            },
+            "ownership_strength": {
+                "value": 0
+            },
+            "time_based_filter": {
+                "minimum_separation": {
+                    "sec": 0,
+                    "nanosec": 0
+                }
+            },
+            "entity_factory": {
+                "autoenable_created_entities": true
+            },
+            "writer_data_lifecycle": {
+                "autodispose_unregistered_instances": true,
+                "autopurge_suspended_samples_delay": {
+                    "sec": 2147483647,
+                    "nanosec": 2147483647
+                },
+                "autounregister_instance_delay": {
+                    "sec": 2147483647,
+                    "nanosec": 2147483647
+                }
+            },
+            "reader_data_lifecycle": {
+                "kind": "minimum_invalid_samples",
+                "autopurge_dispose_all": false,
+                "autopurge_nowriter_samples_delay": {
+                    "sec": 2147483647,
+                    "nanosec": 2147483647
+                },
+                "autopurge_disposed_samples_delay": {
+                    "sec": 2147483647,
+                    "nanosec": 2147483647
+                }
+            },
+            "durability_service": {
+                "kind": "keep_last",
+                "depth": 1,
+                "max_samples": -1,
+                "max_instances": -1,
+                "max_samples_per_instance": -1,
+                "service_cleanup_delay": {
+                    "sec": 0,
+                    "nanosec": 0
+                }
+            },
+            "deadline": {
+                "period": {
+                    "sec": 2147483647,
+                    "nanosec": 2147483647
+                }
+            },
+            "destination_order": {
+                "kind": "by_reception_timestamp"
+            },
+            "durability": {
+                "kind": "volatile"
+            },
+            "history": {
+                "kind": "keep_last",
+                "depth": 1
+            },
+            "latency_budget": {
+                "duration": {
+                    "sec": 0,
+                    "nanosec": 0
+                }
+            },
+            "liveliness": {
+                "kind": "automatic",
+                "lease_duration": {
+                    "sec": 2147483647,
+                    "nanosec": 2147483647
+                }
+            },
+            "ownership": {
+                "kind": "shared"
+            },
+            "resource_limits": {
+                "max_samples": -1,
+                "max_instances": -1,
+                "max_samples_per_instance": -1
+            }
+        }
+    },
+    "define_topic": [
+        {
+            "name": "topic1",
+            "qos": {
+                "user_data": {
+                    "value": ""
+                },
+                "topic_data": {
+                    "value": ""
+                },
+                "group_data": {
+                    "value": ""
+                },
+                "transport_priority": {
+                    "value": 0
+                },
+                "lifespan": {
+                    "duration": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "presentation": {
+                    "kind": "instance",
+                    "coherent_access": false,
+                    "ordered_access": false
+                },
+                "ownership_strength": {
+                    "value": 0
+                },
+                "time_based_filter": {
+                    "minimum_separation": {
+                        "sec": 0,
+                        "nanosec": 0
+                    }
+                },
+                "entity_factory": {
+                    "autoenable_created_entities": true
+                },
+                "writer_data_lifecycle": {
+                    "autodispose_unregistered_instances": true,
+                    "autopurge_suspended_samples_delay": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    },
+                    "autounregister_instance_delay": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "reader_data_lifecycle": {
+                    "kind": "minimum_invalid_samples",
+                    "autopurge_dispose_all": false,
+                    "autopurge_nowriter_samples_delay": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    },
+                    "autopurge_disposed_samples_delay": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "durability_service": {
+                    "kind": "keep_last",
+                    "depth": 1,
+                    "max_samples": -1,
+                    "max_instances": -1,
+                    "max_samples_per_instance": -1,
+                    "service_cleanup_delay": {
+                        "sec": 0,
+                        "nanosec": 0
+                    }
+                },
+                "deadline": {
+                    "period": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "destination_order": {
+                    "kind": "by_reception_timestamp"
+                },
+                "durability": {
+                    "kind": "volatile"
+                },
+                "history": {
+                    "kind": "keep_last",
+                    "depth": 1
+                },
+                "latency_budget": {
+                    "duration": {
+                        "sec": 0,
+                        "nanosec": 0
+                    }
+                },
+                "liveliness": {
+                    "kind": "automatic",
+                    "lease_duration": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "ownership": {
+                    "kind": "shared"
+                },
+                "resource_limits": {
+                    "max_samples": -1,
+                    "max_instances": -1,
+                    "max_samples_per_instance": -1
+                },
+                "reliability": {
+                    "kind": "best_effort",
+                    "max_block_time": {
+                        "sec": 0,
+                        "nanosec": 100000000
+                    }
+                }
+            }
+        }
+    ],
+    "define_data_writer": [
+        {
+            "name": "dw_1",
+            "qos": {
+                "user_data": {
+                    "value": ""
+                },
+                "topic_data": {
+                    "value": ""
+                },
+                "group_data": {
+                    "value": ""
+                },
+                "transport_priority": {
+                    "value": 0
+                },
+                "lifespan": {
+                    "duration": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "presentation": {
+                    "kind": "instance",
+                    "coherent_access": false,
+                    "ordered_access": false
+                },
+                "ownership_strength": {
+                    "value": 0
+                },
+                "time_based_filter": {
+                    "minimum_separation": {
+                        "sec": 0,
+                        "nanosec": 0
+                    }
+                },
+                "entity_factory": {
+                    "autoenable_created_entities": true
+                },
+                "writer_data_lifecycle": {
+                    "autodispose_unregistered_instances": true,
+                    "autopurge_suspended_samples_delay": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    },
+                    "autounregister_instance_delay": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "reader_data_lifecycle": {
+                    "kind": "minimum_invalid_samples",
+                    "autopurge_dispose_all": false,
+                    "autopurge_nowriter_samples_delay": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    },
+                    "autopurge_disposed_samples_delay": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "durability_service": {
+                    "kind": "keep_last",
+                    "depth": 1,
+                    "max_samples": -1,
+                    "max_instances": -1,
+                    "max_samples_per_instance": -1,
+                    "service_cleanup_delay": {
+                        "sec": 0,
+                        "nanosec": 0
+                    }
+                },
+                "deadline": {
+                    "period": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "destination_order": {
+                    "kind": "by_reception_timestamp"
+                },
+                "durability": {
+                    "kind": "volatile"
+                },
+                "history": {
+                    "kind": "keep_last",
+                    "depth": 1
+                },
+                "latency_budget": {
+                    "duration": {
+                        "sec": 0,
+                        "nanosec": 0
+                    }
+                },
+                "liveliness": {
+                    "kind": "automatic",
+                    "lease_duration": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "ownership": {
+                    "kind": "shared"
+                },
+                "resource_limits": {
+                    "max_samples": -1,
+                    "max_instances": -1,
+                    "max_samples_per_instance": -1
+                }
+            },
+            "dst_topic": "topic1",
+            "msg_size": 12,
+            "msg_cycletime": 1
+        }
+    ],
+    "define_data_reader": [
+        {
+            "name": "dr_1",
+            "qos": {
+                "user_data": {
+                    "value": ""
+                },
+                "topic_data": {
+                    "value": ""
+                },
+                "group_data": {
+                    "value": ""
+                },
+                "transport_priority": {
+                    "value": 0
+                },
+                "lifespan": {
+                    "duration": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "presentation": {
+                    "kind": "instance",
+                    "coherent_access": false,
+                    "ordered_access": false
+                },
+                "ownership_strength": {
+                    "value": 0
+                },
+                "time_based_filter": {
+                    "minimum_separation": {
+                        "sec": 0,
+                        "nanosec": 0
+                    }
+                },
+                "entity_factory": {
+                    "autoenable_created_entities": true
+                },
+                "writer_data_lifecycle": {
+                    "autodispose_unregistered_instances": true,
+                    "autopurge_suspended_samples_delay": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    },
+                    "autounregister_instance_delay": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "reader_data_lifecycle": {
+                    "kind": "minimum_invalid_samples",
+                    "autopurge_dispose_all": false,
+                    "autopurge_nowriter_samples_delay": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    },
+                    "autopurge_disposed_samples_delay": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "durability_service": {
+                    "kind": "keep_last",
+                    "depth": 1,
+                    "max_samples": -1,
+                    "max_instances": -1,
+                    "max_samples_per_instance": -1,
+                    "service_cleanup_delay": {
+                        "sec": 0,
+                        "nanosec": 0
+                    }
+                },
+                "deadline": {
+                    "period": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "destination_order": {
+                    "kind": "by_reception_timestamp"
+                },
+                "durability": {
+                    "kind": "volatile"
+                },
+                "history": {
+                    "kind": "keep_last",
+                    "depth": 1
+                },
+                "latency_budget": {
+                    "duration": {
+                        "sec": 0,
+                        "nanosec": 0
+                    }
+                },
+                "liveliness": {
+                    "kind": "automatic",
+                    "lease_duration": {
+                        "sec": 2147483647,
+                        "nanosec": 2147483647
+                    }
+                },
+                "ownership": {
+                    "kind": "shared"
+                },
+                "resource_limits": {
+                    "max_samples": -1,
+                    "max_instances": -1,
+                    "max_samples_per_instance": -1
+                }
+            },
+            "src_topic": "topic1"
+        }
+    ],
+    "devices": [
+        {
+            "name": "device1",
+            "domains": [
+                {
+                    "qos": {
+                        "user_data": {
+                            "value": ""
+                        },
+                        "topic_data": {
+                            "value": ""
+                        },
+                        "group_data": {
+                            "value": ""
+                        },
+                        "transport_priority": {
+                            "value": 0
+                        },
+                        "lifespan": {
+                            "duration": {
+                                "sec": 2147483647,
+                                "nanosec": 2147483647
+                            }
+                        },
+                        "presentation": {
+                            "kind": "instance",
+                            "coherent_access": false,
+                            "ordered_access": false
+                        },
+                        "ownership_strength": {
+                            "value": 0
+                        },
+                        "time_based_filter": {
+                            "minimum_separation": {
+                                "sec": 0,
+                                "nanosec": 0
+                            }
+                        },
+                        "entity_factory": {
+                            "autoenable_created_entities": true
+                        },
+                        "writer_data_lifecycle": {
+                            "autodispose_unregistered_instances": true,
+                            "autopurge_suspended_samples_delay": {
+                                "sec": 2147483647,
+                                "nanosec": 2147483647
+                            },
+                            "autounregister_instance_delay": {
+                                "sec": 2147483647,
+                                "nanosec": 2147483647
+                            }
+                        },
+                        "reader_data_lifecycle": {
+                            "kind": "minimum_invalid_samples",
+                            "autopurge_dispose_all": false,
+                            "autopurge_nowriter_samples_delay": {
+                                "sec": 2147483647,
+                                "nanosec": 2147483647
+                            },
+                            "autopurge_disposed_samples_delay": {
+                                "sec": 2147483647,
+                                "nanosec": 2147483647
+                            }
+                        },
+                        "durability_service": {
+                            "kind": "keep_last",
+                            "depth": 1,
+                            "max_samples": -1,
+                            "max_instances": -1,
+                            "max_samples_per_instance": -1,
+                            "service_cleanup_delay": {
+                                "sec": 0,
+                                "nanosec": 0
+                            }
+                        },
+                        "deadline": {
+                            "period": {
+                                "sec": 2147483647,
+                                "nanosec": 2147483647
+                            }
+                        },
+                        "destination_order": {
+                            "kind": "by_reception_timestamp"
+                        },
+                        "durability": {
+                            "kind": "volatile"
+                        },
+                        "history": {
+                            "kind": "keep_last",
+                            "depth": 1
+                        },
+                        "latency_budget": {
+                            "duration": {
+                                "sec": 0,
+                                "nanosec": 0
+                            }
+                        },
+                        "liveliness": {
+                            "kind": "automatic",
+                            "lease_duration": {
+                                "sec": 2147483647,
+                                "nanosec": 2147483647
+                            }
+                        },
+                        "ownership": {
+                            "kind": "shared"
+                        },
+                        "resource_limits": {
+                            "max_samples": -1,
+                            "max_instances": -1,
+                            "max_samples_per_instance": -1
+                        },
+                        "reliability": {
+                            "kind": "best_effort",
+                            "max_block_time": {
+                                "sec": 0,
+                                "nanosec": 100000000
+                            }
+                        }
+                    },
+                    "partitions": [
+                        {
+                            "name": "part1",
+                            "publishers": [
+                                {
+                                    "qos": {
+                                        "user_data": {
+                                            "value": ""
+                                        },
+                                        "topic_data": {
+                                            "value": ""
+                                        },
+                                        "group_data": {
+                                            "value": ""
+                                        },
+                                        "transport_priority": {
+                                            "value": 0
+                                        },
+                                        "lifespan": {
+                                            "duration": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            }
+                                        },
+                                        "presentation": {
+                                            "kind": "instance",
+                                            "coherent_access": false,
+                                            "ordered_access": false
+                                        },
+                                        "ownership_strength": {
+                                            "value": 0
+                                        },
+                                        "time_based_filter": {
+                                            "minimum_separation": {
+                                                "sec": 0,
+                                                "nanosec": 0
+                                            }
+                                        },
+                                        "entity_factory": {
+                                            "autoenable_created_entities": true
+                                        },
+                                        "writer_data_lifecycle": {
+                                            "autodispose_unregistered_instances": true,
+                                            "autopurge_suspended_samples_delay": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            },
+                                            "autounregister_instance_delay": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            }
+                                        },
+                                        "reader_data_lifecycle": {
+                                            "kind": "minimum_invalid_samples",
+                                            "autopurge_dispose_all": false,
+                                            "autopurge_nowriter_samples_delay": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            },
+                                            "autopurge_disposed_samples_delay": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            }
+                                        },
+                                        "durability_service": {
+                                            "kind": "keep_last",
+                                            "depth": 1,
+                                            "max_samples": -1,
+                                            "max_instances": -1,
+                                            "max_samples_per_instance": -1,
+                                            "service_cleanup_delay": {
+                                                "sec": 0,
+                                                "nanosec": 0
+                                            }
+                                        },
+                                        "deadline": {
+                                            "period": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            }
+                                        },
+                                        "destination_order": {
+                                            "kind": "by_reception_timestamp"
+                                        },
+                                        "durability": {
+                                            "kind": "volatile"
+                                        },
+                                        "history": {
+                                            "kind": "keep_last",
+                                            "depth": 1
+                                        },
+                                        "latency_budget": {
+                                            "duration": {
+                                                "sec": 0,
+                                                "nanosec": 0
+                                            }
+                                        },
+                                        "liveliness": {
+                                            "kind": "automatic",
+                                            "lease_duration": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            }
+                                        },
+                                        "ownership": {
+                                            "kind": "shared"
+                                        },
+                                        "resource_limits": {
+                                            "max_samples": -1,
+                                            "max_instances": -1,
+                                            "max_samples_per_instance": -1
+                                        },
+                                        "reliability": {
+                                            "kind": "best_effort",
+                                            "max_block_time": {
+                                                "sec": 0,
+                                                "nanosec": 100000000
+                                            }
+                                        }
+                                    },
+                                    "data_writers": [
+                                        {
+                                            "name": "dw_1",
+                                            "msg_size": 1,
+                                            "msg_cycletime": 1,
+                                            "qos": {
+                                                "user_data": {
+                                                    "value": ""
+                                                },
+                                                "topic_data": {
+                                                    "value": ""
+                                                },
+                                                "group_data": {
+                                                    "value": ""
+                                                },
+                                                "transport_priority": {
+                                                    "value": 0
+                                                },
+                                                "lifespan": {
+                                                    "duration": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    }
+                                                },
+                                                "presentation": {
+                                                    "kind": "instance",
+                                                    "coherent_access": false,
+                                                    "ordered_access": false
+                                                },
+                                                "ownership_strength": {
+                                                    "value": 0
+                                                },
+                                                "time_based_filter": {
+                                                    "minimum_separation": {
+                                                        "sec": 0,
+                                                        "nanosec": 0
+                                                    }
+                                                },
+                                                "entity_factory": {
+                                                    "autoenable_created_entities": true
+                                                },
+                                                "writer_data_lifecycle": {
+                                                    "autodispose_unregistered_instances": true,
+                                                    "autopurge_suspended_samples_delay": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    },
+                                                    "autounregister_instance_delay": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    }
+                                                },
+                                                "reader_data_lifecycle": {
+                                                    "kind": "minimum_invalid_samples",
+                                                    "autopurge_dispose_all": false,
+                                                    "autopurge_nowriter_samples_delay": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    },
+                                                    "autopurge_disposed_samples_delay": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    }
+                                                },
+                                                "durability_service": {
+                                                    "kind": "keep_last",
+                                                    "depth": 1,
+                                                    "max_samples": -1,
+                                                    "max_instances": -1,
+                                                    "max_samples_per_instance": -1,
+                                                    "service_cleanup_delay": {
+                                                        "sec": 0,
+                                                        "nanosec": 0
+                                                    }
+                                                },
+                                                "deadline": {
+                                                    "period": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    }
+                                                },
+                                                "destination_order": {
+                                                    "kind": "by_reception_timestamp"
+                                                },
+                                                "durability": {
+                                                    "kind": "volatile"
+                                                },
+                                                "history": {
+                                                    "kind": "keep_last",
+                                                    "depth": 1
+                                                },
+                                                "latency_budget": {
+                                                    "duration": {
+                                                        "sec": 0,
+                                                        "nanosec": 0
+                                                    }
+                                                },
+                                                "liveliness": {
+                                                    "kind": "automatic",
+                                                    "lease_duration": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    }
+                                                },
+                                                "ownership": {
+                                                    "kind": "shared"
+                                                },
+                                                "resource_limits": {
+                                                    "max_samples": -1,
+                                                    "max_instances": -1,
+                                                    "max_samples_per_instance": -1
+                                                },
+                                                "reliability": {
+                                                    "kind": "reliable",
+                                                    "max_block_time": {
+                                                        "sec": 0,
+                                                        "nanosec": 100000000
+                                                    }
+                                                }
+                                            },
+                                            "dst_topic": "topic1"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "subscribers": [
+                                {
+                                    "qos": {
+                                        "user_data": {
+                                            "value": ""
+                                        },
+                                        "topic_data": {
+                                            "value": ""
+                                        },
+                                        "group_data": {
+                                            "value": ""
+                                        },
+                                        "transport_priority": {
+                                            "value": 0
+                                        },
+                                        "lifespan": {
+                                            "duration": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            }
+                                        },
+                                        "presentation": {
+                                            "kind": "instance",
+                                            "coherent_access": false,
+                                            "ordered_access": false
+                                        },
+                                        "ownership_strength": {
+                                            "value": 0
+                                        },
+                                        "time_based_filter": {
+                                            "minimum_separation": {
+                                                "sec": 0,
+                                                "nanosec": 0
+                                            }
+                                        },
+                                        "entity_factory": {
+                                            "autoenable_created_entities": true
+                                        },
+                                        "writer_data_lifecycle": {
+                                            "autodispose_unregistered_instances": true,
+                                            "autopurge_suspended_samples_delay": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            },
+                                            "autounregister_instance_delay": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            }
+                                        },
+                                        "reader_data_lifecycle": {
+                                            "kind": "minimum_invalid_samples",
+                                            "autopurge_dispose_all": false,
+                                            "autopurge_nowriter_samples_delay": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            },
+                                            "autopurge_disposed_samples_delay": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            }
+                                        },
+                                        "durability_service": {
+                                            "kind": "keep_last",
+                                            "depth": 1,
+                                            "max_samples": -1,
+                                            "max_instances": -1,
+                                            "max_samples_per_instance": -1,
+                                            "service_cleanup_delay": {
+                                                "sec": 0,
+                                                "nanosec": 0
+                                            }
+                                        },
+                                        "deadline": {
+                                            "period": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            }
+                                        },
+                                        "destination_order": {
+                                            "kind": "by_reception_timestamp"
+                                        },
+                                        "durability": {
+                                            "kind": "volatile"
+                                        },
+                                        "history": {
+                                            "kind": "keep_last",
+                                            "depth": 1
+                                        },
+                                        "latency_budget": {
+                                            "duration": {
+                                                "sec": 0,
+                                                "nanosec": 0
+                                            }
+                                        },
+                                        "liveliness": {
+                                            "kind": "automatic",
+                                            "lease_duration": {
+                                                "sec": 2147483647,
+                                                "nanosec": 2147483647
+                                            }
+                                        },
+                                        "ownership": {
+                                            "kind": "shared"
+                                        },
+                                        "resource_limits": {
+                                            "max_samples": -1,
+                                            "max_instances": -1,
+                                            "max_samples_per_instance": -1
+                                        },
+                                        "reliability": {
+                                            "kind": "best_effort",
+                                            "max_block_time": {
+                                                "sec": 0,
+                                                "nanosec": 100000000
+                                            }
+                                        }
+                                    },
+                                    "data_readers": [
+                                        {
+                                            "name": "dr_1",
+                                            "qos": {
+                                                "user_data": {
+                                                    "value": ""
+                                                },
+                                                "topic_data": {
+                                                    "value": ""
+                                                },
+                                                "group_data": {
+                                                    "value": ""
+                                                },
+                                                "transport_priority": {
+                                                    "value": 0
+                                                },
+                                                "lifespan": {
+                                                    "duration": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    }
+                                                },
+                                                "presentation": {
+                                                    "kind": "instance",
+                                                    "coherent_access": false,
+                                                    "ordered_access": false
+                                                },
+                                                "ownership_strength": {
+                                                    "value": 0
+                                                },
+                                                "time_based_filter": {
+                                                    "minimum_separation": {
+                                                        "sec": 0,
+                                                        "nanosec": 0
+                                                    }
+                                                },
+                                                "entity_factory": {
+                                                    "autoenable_created_entities": true
+                                                },
+                                                "writer_data_lifecycle": {
+                                                    "autodispose_unregistered_instances": true,
+                                                    "autopurge_suspended_samples_delay": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    },
+                                                    "autounregister_instance_delay": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    }
+                                                },
+                                                "reader_data_lifecycle": {
+                                                    "kind": "minimum_invalid_samples",
+                                                    "autopurge_dispose_all": false,
+                                                    "autopurge_nowriter_samples_delay": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    },
+                                                    "autopurge_disposed_samples_delay": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    }
+                                                },
+                                                "durability_service": {
+                                                    "kind": "keep_last",
+                                                    "depth": 1,
+                                                    "max_samples": -1,
+                                                    "max_instances": -1,
+                                                    "max_samples_per_instance": -1,
+                                                    "service_cleanup_delay": {
+                                                        "sec": 0,
+                                                        "nanosec": 0
+                                                    }
+                                                },
+                                                "deadline": {
+                                                    "period": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    }
+                                                },
+                                                "destination_order": {
+                                                    "kind": "by_reception_timestamp"
+                                                },
+                                                "durability": {
+                                                    "kind": "volatile"
+                                                },
+                                                "history": {
+                                                    "kind": "keep_last",
+                                                    "depth": 1
+                                                },
+                                                "latency_budget": {
+                                                    "duration": {
+                                                        "sec": 0,
+                                                        "nanosec": 0
+                                                    }
+                                                },
+                                                "liveliness": {
+                                                    "kind": "automatic",
+                                                    "lease_duration": {
+                                                        "sec": 2147483647,
+                                                        "nanosec": 2147483647
+                                                    }
+                                                },
+                                                "ownership": {
+                                                    "kind": "shared"
+                                                },
+                                                "resource_limits": {
+                                                    "max_samples": -1,
+                                                    "max_instances": -1,
+                                                    "max_samples_per_instance": -1
+                                                },
+                                                "reliability": {
+                                                    "kind": "best_effort",
+                                                    "max_block_time": {
+                                                        "sec": 0,
+                                                        "nanosec": 100000000
+                                                    }
+                                                }
+                                            },
+                                            "src_topic": "topic1"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "number": 1
+        }
+    ]
+}

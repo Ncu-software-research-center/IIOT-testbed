@@ -1,0 +1,1 @@
+{"device1": {"cpu_usage": 9.639968438641587, "memory_usage": 49.1145163558222, "bandwidth_receive": 11945.555555555555, "bandwidth_transmit": 271122.6666666667}, "device2": {"cpu_usage": 1.5807631092183936, "memory_usage": 48.70031325036146, "bandwidth_receive": 264369.2, "bandwidth_transmit": 9884.4}}

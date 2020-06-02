@@ -1,0 +1,550 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "define_qos",
+    "description": "Testbed DSAL define_qos schema",
+    "type": "object",
+    "definitions": {
+        "define_qos": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "base": {
+                        "$ref": "basic_type.json#/definitions/string_type",
+                        "default": "default"
+                    },
+                    "qos": {
+                        "$ref": "define_qos.json#/definitions/qos",
+                        "default": {}
+                    }
+                },
+                "additionalProperties": false
+            },
+            "required": [
+                "name",
+                "base"
+            ]
+        },
+        "qos": {
+            "type": "object",
+            "properties": {
+                "user_data": {
+                    "$ref": "basic_type.json#/definitions/string_value_type",
+                    "default": {}
+                },
+                "topic_data": {
+                    "$ref": "basic_type.json#/definitions/string_value_type",
+                    "default": {}
+                },
+                "group_data": {
+                    "$ref": "basic_type.json#/definitions/string_value_type",
+                    "default": {}
+                },
+                "transport_priority": {
+                    "type": "object",
+                    "properties": {
+                        "value": {
+                            "$ref": "basic_type.json#/definitions/integer_value_type",
+                            "default": 0
+                        }
+                    },
+                    "default": {},
+                    "required": [
+                        "value"
+                    ],
+                    "additionalProperties": false
+                },
+                "lifespan": {
+                    "type": "object",
+                    "properties": {
+                        "duration": {
+                            "$ref": "basic_type.json#/definitions/duration_type",
+                            "default": {
+                                "sec": 2147483647,
+                                "nanosec": -1
+                            }
+                        }
+                    },
+                    "default": {},
+                    "required": [
+                        "duration"
+                    ],
+                    "additionalProperties": false
+                },
+                "durability": {
+                    "type": "object",
+                    "properties": {
+                        "kind": {
+                            "type": "string",
+                            "enum": [
+                                "volatile",
+                                "transient_local",
+                                "transient",
+                                "persistent"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "kind"
+                    ],
+                    "additionalProperties": false
+                },
+                "presentation": {
+                    "type": "object",
+                    "properties": {
+                        "kind": {
+                            "type": "string",
+                            "enum": [
+                                "instance",
+                                "topic",
+                                "group"
+                            ],
+                            "default": "instance"
+                        },
+                        "coherent_access": {
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "ordered_access": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    "default": {},
+                    "required": [
+                        "kind",
+                        "coherent_access",
+                        "ordered_access"
+                    ],
+                    "additionalProperties": false
+                },
+                "deadline": {
+                    "type": "object",
+                    "properties": {
+                        "period": {
+                            "$ref": "basic_type.json#/definitions/duration_type"
+                        }
+                    },
+                    "required": [
+                        "period"
+                    ],
+                    "additionalProperties": false
+                },
+                "latency_budget": {
+                    "type": "object",
+                    "properties": {
+                        "duration": {
+                            "$ref": "basic_type.json#/definitions/duration_type"
+                        }
+                    },
+                    "required": [
+                        "duration"
+                    ],
+                    "additionalProperties": false
+                },
+                "ownership": {
+                    "type": "object",
+                    "properties": {
+                        "kind": {
+                            "type": "string",
+                            "enum": [
+                                "shared",
+                                "exclusive"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "kind"
+                    ],
+                    "additionalProperties": false
+                },
+                "ownership_strength": {
+                    "type": "object",
+                    "properties": {
+                        "value": {
+                            "$ref": "basic_type.json#/definitions/integer_value_type",
+                            "default": 0
+                        }
+                    },
+                    "default": {},
+                    "required": [
+                        "value"
+                    ],
+                    "additionalProperties": false
+                },
+                "liveliness": {
+                    "type": "object",
+                    "properties": {
+                        "kind": {
+                            "type": "string",
+                            "enum": [
+                                "automatic",
+                                "manual_by_participant",
+                                "manual_by_topic"
+                            ]
+                        },
+                        "lease_duration": {
+                            "$ref": "basic_type.json#/definitions/duration_type"
+                        }
+                    },
+                    "required": [
+                        "kind",
+                        "lease_duration"
+                    ],
+                    "additionalProperties": false
+                },
+                "time_based_filter": {
+                    "type": "object",
+                    "properties": {
+                        "minimum_separation": {
+                            "$ref": "basic_type.json#/definitions/duration_type",
+                            "default": {
+                                "sec": 0,
+                                "nanosec": 0
+                            }
+                        }
+                    },
+                    "default": {},
+                    "required": [
+                        "minimum_separation"
+                    ],
+                    "additionalProperties": false
+                },
+                "reliability": {
+                    "type": "object",
+                    "properties": {
+                        "kind": {
+                            "type": "string",
+                            "enum": [
+                                "best_effort",
+                                "reliable"
+                            ]
+                        },
+                        "max_blocking_time": {
+                            "type": "object",
+                            "properties": {
+                                "sec": {
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 2147483647
+                                },
+                                "nanosec": {
+                                    "type": "integer",
+                                    "minimum": -1,
+                                    "maximum": 999999999
+                                }
+                            },
+                            "required": [
+                                "sec",
+                                "nanosec"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "kind",
+                        "max_blocking_time"
+                    ],
+                    "additionalProperties": false
+                },
+                "destination_order": {
+                    "type": "object",
+                    "properties": {
+                        "kind": {
+                            "type": "string",
+                            "enum": [
+                                "by_reception_timestamp",
+                                "by_source_timestamp"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "kind"
+                    ],
+                    "additionalProperties": false
+                },
+                "history": {
+                    "type": "object",
+                    "properties": {
+                        "kind": {
+                            "type": "string",
+                            "enum": [
+                                "keep_last",
+                                "keep_all"
+                            ]
+                        },
+                        "depth": {
+                            "$ref": "basic_type.json#/definitions/integer_type"
+                        }
+                    },
+                    "required": [
+                        "kind",
+                        "depth"
+                    ],
+                    "additionalProperties": false
+                },
+                "resource_limits": {
+                    "type": "object",
+                    "properties": {
+                        "max_samples": {
+                            "$ref": "basic_type.json#/definitions/integer_value_type"
+                        },
+                        "max_instances": {
+                            "$ref": "basic_type.json#/definitions/integer_value_type"
+                        },
+                        "max_samples_per_instance": {
+                            "$ref": "basic_type.json#/definitions/integer_value_type"
+                        }
+                    },
+                    "required": [
+                        "max_samples",
+                        "max_instances",
+                        "max_samples_per_instance"
+                    ],
+                    "additionalProperties": false
+                },
+                "entity_factory": {
+                    "type": "object",
+                    "properties": {
+                        "autoenable_created_entities": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    },
+                    "default": {},
+                    "required": [
+                        "autoenable_created_entities"
+                    ],
+                    "additionalProperties": false
+                },
+                "writer_data_lifecycle": {
+                    "type": "object",
+                    "properties": {
+                        "autodispose_unregistered_instances": {
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "autopurge_suspended_samples_delay": {
+                            "$ref": "basic_type.json#/definitions/duration_type",
+                            "default": {
+                                "sec": 2147483647,
+                                "nanosec": -1
+                            }
+                        },
+                        "autounregister_instance_delay": {
+                            "$ref": "basic_type.json#/definitions/duration_type",
+                            "default": {
+                                "sec": 2147483647,
+                                "nanosec": -1
+                            }
+                        }
+                    },
+                    "default": {},
+                    "required": [
+                        "autodispose_unregistered_instances",
+                        "autopurge_suspended_samples_delay",
+                        "autounregister_instance_delay"
+                    ],
+                    "additionalProperties": false
+                },
+                "reader_data_lifecycle": {
+                    "type": "object",
+                    "properties": {
+                        "kind": {
+                            "type": "string",
+                            "enum": [
+                                "no_invalid_samples",
+                                "minimum_invalid_samples",
+                                "all_invalid_samples"
+                            ],
+                            "default": "minimum_invalid_samples"
+                        },
+                        "autopurge_dispose_all": {
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "autopurge_nowriter_samples_delay": {
+                            "$ref": "basic_type.json#/definitions/duration_type",
+                            "default": {
+                                "sec": 2147483647,
+                                "nanosec": -1
+                            }
+                        },
+                        "autopurge_disposed_samples_delay": {
+                            "$ref": "basic_type.json#/definitions/duration_type",
+                            "default": {
+                                "sec": 2147483647,
+                                "nanosec": -1
+                            }
+                        }
+                    },
+                    "default": {},
+                    "required": [
+                        "kind",
+                        "autopurge_dispose_all",
+                        "autopurge_nowriter_samples_delay",
+                        "autopurge_disposed_samples_delay"
+                    ],
+                    "additionalProperties": false
+                },
+                "durability_service": {
+                    "type": "object",
+                    "properties": {
+                        "kind": {
+                            "type": "string",
+                            "enum": [
+                                "keep_last",
+                                "keep_all"
+                            ],
+                            "default": "keep_last"
+                        },
+                        "depth": {
+                            "$ref": "basic_type.json#/definitions/integer_type",
+                            "default": 1
+                        },
+                        "max_samples": {
+                            "$ref": "basic_type.json#/definitions/integer_value_type",
+                            "default": -1
+                        },
+                        "max_instances": {
+                            "$ref": "basic_type.json#/definitions/integer_value_type",
+                            "default": -1
+                        },
+                        "max_samples_per_instance": {
+                            "$ref": "basic_type.json#/definitions/integer_value_type",
+                            "default": -1
+                        },
+                        "service_cleanup_delay": {
+                            "$ref": "basic_type.json#/definitions/duration_type",
+                            "default": {
+                                "sec": 0,
+                                "nanosec": 0
+                            }
+                        }
+                    },
+                    "default": {},
+                    "required": [
+                        "kind",
+                        "depth",
+                        "max_samples",
+                        "max_instances",
+                        "max_samples_per_instance",
+                        "service_cleanup_delay"
+                    ],
+                    "additionalProperties": false
+                }
+            },
+            "anyOf": [
+                {
+                    "required": [
+                        "user_data"
+                    ]
+                },
+                {
+                    "required": [
+                        "topic_data"
+                    ]
+                },
+                {
+                    "required": [
+                        "group_data"
+                    ]
+                },
+                {
+                    "required": [
+                        "transport_priority"
+                    ]
+                },
+                {
+                    "required": [
+                        "lifespan"
+                    ]
+                },
+                {
+                    "required": [
+                        "durability"
+                    ]
+                },
+                {
+                    "required": [
+                        "presentation"
+                    ]
+                },
+                {
+                    "required": [
+                        "deadline"
+                    ]
+                },
+                {
+                    "required": [
+                        "latency_budget"
+                    ]
+                },
+                {
+                    "required": [
+                        "ownership"
+                    ]
+                },
+                {
+                    "required": [
+                        "ownership_strength"
+                    ]
+                },
+                {
+                    "required": [
+                        "liveliness"
+                    ]
+                },
+                {
+                    "required": [
+                        "time_based_filter"
+                    ]
+                },
+                {
+                    "required": [
+                        "reliability"
+                    ]
+                },
+                {
+                    "required": [
+                        "destination_order"
+                    ]
+                },
+                {
+                    "required": [
+                        "history"
+                    ]
+                },
+                {
+                    "required": [
+                        "resource_limits"
+                    ]
+                },
+                {
+                    "required": [
+                        "entity_factory"
+                    ]
+                },
+                {
+                    "required": [
+                        "writer_data_lifecycle"
+                    ]
+                },
+                {
+                    "required": [
+                        "reader_data_lifecycle"
+                    ]
+                },
+                {
+                    "required": [
+                        "durability_service"
+                    ]
+                }
+            ],
+            "additionalProperties": false
+        }
+    }
+}

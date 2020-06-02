@@ -1,0 +1,2 @@
+python-redis-lock==3.3.1
+redis==3.2.1

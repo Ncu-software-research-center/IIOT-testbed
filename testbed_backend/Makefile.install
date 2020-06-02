@@ -1,0 +1,32 @@
+SHELL=/bin/bash
+
+FRONTENDuser=testbed
+FRONTENDip=127.0.0.1
+REDISpasswd=redis_password
+
+
+# Do not modify these variables.
+TOPdir={TOPdir}
+OSPLdir=${OSPL_HOME}
+
+all: install
+
+clean: uninstall
+
+install:
+	sed -i 's/{BACKENDuser}/${USER}/g' agentworker/testbed-agent.service
+	sed -i 's/{OSPLdir}/$(subst /,\/,${OSPLdir})/g' agentworker/agent-wrap.sh
+	sed -i 's/{REDIS_PASSWORD}/$(REDISpasswd)/g' agentworker/config.py
+	sed -i 's/{SERVER_USER_NAME}/$(FRONTENDuser)/g' agentworker/config.py
+	sed -i 's/{SERVER_IP}/$(FRONTENDip)/g' agentworker/config.py
+	mkdir -p $(TOPdir)/testbed/{report,datasetting}
+	cp -a agentworker $(TOPdir)/testbed/
+	cp -a emulation $(TOPdir)/testbed/
+	cp -a lib $(TOPdir)/testbed/
+	chmod +x $(TOPdir)/testbed/emulation
+	chmod +x $(TOPdir)/testbed/agentworker/agent-wrap.sh
+	rm -f $(TOPdir)/testbed/agentworker/testbed-agent.service
+	rm -f $(TOPdir)/testbed/agentworker/requirements.txt
+
+uninstall:
+	rm -rf $(TOPdir)/testbed

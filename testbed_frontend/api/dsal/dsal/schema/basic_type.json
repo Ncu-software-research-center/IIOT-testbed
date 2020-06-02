@@ -1,0 +1,59 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "basic_type",
+    "description": "Testbed DSAL basic_type schema",
+    "type": "object",
+    "definitions": {
+        "string_type": {
+            "type": "string",
+            "minLength": 1
+        },
+        "version_type": {
+            "type": "string",
+            "pattern": "^[0-9]\\.[0-9]\\.[0-9]$"
+        },
+        "integer_type": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+        },
+        "string_value_type": {
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "default": ""
+                }
+            },
+            "required": [
+                "value"
+            ],
+            "additionalProperties": false
+        },
+        "integer_value_type": {
+            "type": "integer",
+            "minumum": -1,
+            "maximum": 2147483647
+        },
+        "duration_type": {
+            "type": "object",
+            "properties": {
+                "sec": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2147483647
+                },
+                "nanosec": {
+                    "type": "integer",
+                    "minimum": -1,
+                    "maximum": 999999999
+                }
+            },
+            "required": [
+                "sec",
+                "nanosec"
+            ],
+            "additionalProperties": false
+        }
+    }
+}

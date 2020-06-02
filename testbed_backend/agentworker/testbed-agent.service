@@ -1,0 +1,14 @@
+[Unit]
+Description=testbed agent daemon
+After=network.target
+
+[Service]
+Type=simple
+User={BACKENDuser}
+WorkingDirectory={TOPdir}/testbed/agentworker
+ExecStart='{TOPdir}/testbed/agentworker/agent-wrap.sh'
+KillMode=control-group
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

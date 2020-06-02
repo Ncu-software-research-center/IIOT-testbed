@@ -1,0 +1,74 @@
+# -*-Makefile-*-
+#----------------------------------------------------------------------------
+#       Macros
+#----------------------------------------------------------------------------
+
+DDS_HOME      = ${OSPL_HOME}
+
+CXX           = g++
+RM            = rm -rf
+MKDIR         = mkdir -p
+TESTDIR       = test -d
+
+COMPILE.cc    = $(CXX) $(CPPFLAGS) -c
+LD            = $(CXX) $(GENFLAGS)
+LINK.cc       = $(LD) $(LDFLAGS)
+
+CPPFLAGS      = -fPIC -Wall $(GENFLAGS) $(INCLUDES)
+INCLUDES      = -I. -I$(DDS_HOME)/include/dcps/C++/SACPP
+LDFLAGS       = -L. -L$(DDS_HOME)/lib
+LDLIBS        = -ldcpssacpp -lddskernel -ldl -lpthread -lemulation_types -ljsoncpp
+OUTPUT_OPTION = -o "$@"
+GENFLAGS      = -O3 -std=c++11 -DNDEBUG -D_REENTRANT
+
+BTARGETDIR    = ./
+LIBSUFFIX     = 
+
+OBJDIR        = .obj/
+OBJEXT        = .o
+OBJS          = $(OBJDIR)Emulation$(OBJEXT) \
+                $(OBJDIR)DDSEntityManager$(OBJEXT) \
+                $(OBJDIR)Loader$(OBJEXT) \
+                $(OBJDIR)Manager$(OBJEXT) \
+                $(OBJDIR)MeasureReceiver$(OBJEXT) \
+                $(OBJDIR)MeasureSender$(OBJEXT) \
+				$(OBJDIR)Monitor$(OBJEXT) \
+                $(OBJDIR)Receiver$(OBJEXT) \
+                $(OBJDIR)Runner$(OBJEXT) \
+                $(OBJDIR)Saver$(OBJEXT) \
+                $(OBJDIR)Sender$(OBJEXT)
+
+SRC           = ./Emulation.cpp \
+                ./DDSEntityManager.cpp \
+                ./Loader.cpp \
+                ./Manager.cpp \
+                ./MeasureReceiver.cpp \
+                ./MeasureSender.cpp \
+				./Monitor.cpp \
+                ./Receiver.cpp \
+                ./Runner.cpp \
+                ./Saver.cpp \
+                ./Sender.cpp
+
+BIN           = emulation
+
+
+#----------------------------------------------------------------------------
+#       Local targets
+#----------------------------------------------------------------------------
+
+all: $(BTARGETDIR)$(BIN)
+
+$(BTARGETDIR)$(BIN): $(OBJS)
+	@$(TESTDIR) "$(BTARGETDIR)" || $(MKDIR) "$(BTARGETDIR)"
+	$(LINK.cc) $(OBJS) $(LDLIBS) $(OUTPUT_OPTION)
+
+$(OBJDIR)%$(OBJEXT) : %.cpp
+	@$(TESTDIR) $(OBJDIR) || $(MKDIR) $(OBJDIR)
+	$(COMPILE.cc) $(OUTPUT_OPTION) $<
+
+clean:
+	-$(RM) $(OBJS)
+
+realclean: clean
+	-$(RM) $(BIN)

@@ -1,0 +1,37 @@
+version: "3.4"
+
+
+services:
+  redis:
+    image: redis
+    container_name: website-redis
+    command: redis-server --requirepass redispass
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data/redis:/data/redis
+  mysql:
+    image: mysql:5.7
+    container_name: website-mysql
+    command: --innodb-flush-method=fsync
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "djangomysql"
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: "test"
+      MYSQL_PASSWORD: "test1234"
+    volumes:
+      - ./data/mysql:/data/mysql
+  web:
+    container_name: website
+    build: .
+    command: sh -c "./wait-for-it.sh mysql:3306 --timeout=60 &&
+                    python manage.py makemigrations &&
+                    python manage.py migrate &&
+                    python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql
+      - redis

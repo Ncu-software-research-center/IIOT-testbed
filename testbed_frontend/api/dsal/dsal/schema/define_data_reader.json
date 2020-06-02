@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "define_data_reader",
+    "description": "Testbed DSAL define_data_reader schema",
+    "type": "object",
+    "definitions": {
+        "define_data_reader": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "name": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "qos": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "base": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "src_topic": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    }
+                },
+                "minProperties": 3,
+                "required": [
+                    "name"
+                ],
+                "if": {
+                    "required": [
+                        "base"
+                    ]
+                },
+                "else": {
+                    "required": [
+                        "qos",
+                        "src_topic"
+                    ]
+                }
+            },
+            "minItems": 1
+        }
+    }
+}

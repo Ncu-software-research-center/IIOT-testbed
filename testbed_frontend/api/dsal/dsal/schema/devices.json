@@ -1,0 +1,164 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "devices",
+    "description": "Testbed DSAL devices schema",
+    "type": "object",
+    "definitions": {
+        "devices": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "name": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "number": {
+                        "$ref": "basic_type.json#/definitions/integer_type",
+                        "default": 1
+                    },
+                    "domains": {
+                        "$ref": "devices.json#/definitions/domains"
+                    }
+                },
+                "required": [
+                    "name",
+                    "domains"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "domains": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "qos": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "partitions": {
+                        "$ref": "devices.json#/definitions/partitions"
+                    }
+                },
+                "required": [
+                    "qos",
+                    "partitions"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "partitions": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "name": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "publishers": {
+                        "$ref": "devices.json#/definitions/publishers"
+                    },
+                    "subscribers": {
+                        "$ref": "devices.json#/definitions/subscribers"
+                    }
+                },
+                "required": [
+                    "name"
+                ],
+                "anyOf": [
+                    {
+                        "required": [
+                            "publishers"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "subscribers"
+                        ]
+                    }
+                ],
+                "additionalProperties": false
+            }
+        },
+        "publishers": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "qos": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "data_writers": {
+                        "$ref": "devices.json#/definitions/data_writers"
+                    }
+                },
+                "required": [
+                    "qos",
+                    "data_writers"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "subscribers": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "qos": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "data_readers": {
+                        "$ref": "devices.json#/definitions/data_readers"
+                    }
+                },
+                "required": [
+                    "qos",
+                    "data_readers"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "data_writers": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "name": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "qos": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "dst_topic": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "msg_size": {
+                        "$ref": "basic_type.json#/definitions/integer_type",
+                        "default": 1
+                    },
+                    "msg_cycletime": {
+                        "$ref": "basic_type.json#/definitions/integer_type",
+                        "default": 1
+                    }
+                },
+                "required": [
+                    "name"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "data_readers": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "name": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "qos": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "src_topic": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    }
+                },
+                "required": [
+                    "name"
+                ],
+                "additionalProperties": false
+            }
+        }
+    }
+}

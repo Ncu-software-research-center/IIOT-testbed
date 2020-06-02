@@ -1,0 +1,48 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "dsal",
+    "description": "Testbed DSAL schema",
+    "type": "object",
+    "properties": {
+        "dsal": {
+            "type": "object",
+            "properties": {
+                "version": {
+                    "$ref": "basic_type.json#/definitions/version_type",
+                    "default": "1.0.0"
+                },
+                "define_qos": {
+                    "$ref": "define_qos.json#/definitions/define_qos"
+                },
+                "define_topic": {
+                    "$ref": "define_topic.json#/definitions/define_topic"
+                },
+                "define_data_writer": {
+                    "$ref": "define_data_writer.json#/definitions/define_data_writer"
+                },
+                "define_data_reader": {
+                    "$ref": "define_data_reader.json#/definitions/define_data_reader"
+                },
+                "profile_name": {
+                    "type": "string"
+                },
+                "devices": {
+                    "$ref": "devices.json#/definitions/devices"
+                }
+            },
+            "required": [
+                "define_qos",
+                "define_topic",
+                "define_data_writer",
+                "define_data_reader",
+                "profile_name",
+                "devices"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "required": [
+        "dsal"
+    ],
+    "additionalProperties": false
+}

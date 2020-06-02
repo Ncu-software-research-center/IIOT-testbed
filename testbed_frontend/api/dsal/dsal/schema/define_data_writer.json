@@ -1,0 +1,51 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "define_data_writer",
+    "description": "Testbed DSAL define_data_writer schema",
+    "type": "object",
+    "definitions": {
+        "define_data_writer": {
+            "type": "array",
+            "items": {
+                "properties": {
+                    "name": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "qos": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "base": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "dst_topic": {
+                        "$ref": "basic_type.json#/definitions/string_type"
+                    },
+                    "msg_size": {
+                        "$ref": "basic_type.json#/definitions/integer_type",
+                        "default": 1
+                    },
+                    "msg_cycletime": {
+                        "$ref": "basic_type.json#/definitions/integer_type",
+                        "default": 1
+                    }
+                },
+                "minProperties": 3,
+                "required": [
+                    "name"
+                ],
+                "if": {
+                    "required": [
+                        "base"
+                    ]
+                },
+                "else": {
+                    "required": [
+                        "qos",
+                        "dst_topic"
+                    ]
+                }
+            },
+            "minItems": 1
+        }
+    }
+}

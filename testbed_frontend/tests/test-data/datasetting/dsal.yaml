@@ -1,0 +1,63 @@
+dsal:
+  version: 1.0.0
+  define_qos:
+    - name: qos1
+      qos:
+        reliability:
+          kind: best_effort
+          max_blocking_time:
+            sec: 10
+            nanosec: 100
+    - name: qos2
+      base: qos1
+      qos:
+        liveliness:
+          kind: automatic
+          lease_duration:
+            sec: 10
+            nanosec: 10
+  define_topic:
+    - name: topic1
+      qos: qos1
+    - name: topic2
+      qos: qos1
+  define_data_writer:
+    - name: dw_1
+      qos: qos1
+      dst_topic: topic1
+      msg_size: 12
+      msg_cycletime: 1
+    - name: dw_2
+      base: dw_1
+      qos: qos2
+      msg_size: 1
+    - name: dw_3
+      base: dw_2
+      msg_size: 11
+  define_data_reader:
+    - name: dr_1
+      qos: qos1
+      src_topic: topic1
+  profile_name: profile1
+  devices:
+    - name: device1
+      number: 2
+      domains:
+        - qos: qos1
+          partitions:
+            - name: part1
+              publishers:
+                - qos: qos1
+                  data_writers:
+                    - name: dw_1
+                    - name: dw_1
+                      qos: qos2
+                    - name: dw_1
+                      dst_topic: topic2
+                    - name: dw_1
+                      msg_size: 1024
+                      msg_cycletime: 1000
+              subscribers:
+                - qos: qos1
+                  data_readers:
+                    - name: dr_1

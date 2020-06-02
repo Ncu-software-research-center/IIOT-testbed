@@ -1,0 +1,109 @@
+# -*-Makefile-*-
+#----------------------------------------------------------------------------
+#       Macros
+#----------------------------------------------------------------------------
+
+SAMPLENAME1   = emulation
+SAMPLENAME2   = Emulation
+VORTEXDIR     = ${OSPL_HOME}
+
+CC            = gcc
+CXX           = g++
+LD            = $(CXX) $(CCFLAGS) $(PICFLAGS) $(GENFLAGS)
+AR            = ar
+PICFLAGS      = -fPIC
+CPPFLAGS      = $(PICFLAGS) $(GENFLAGS) -D_REENTRANT -Wall -I"$(VORTEXDIR)/include" -I"$(VORTEXDIR)/include/sys" -I"$(VORTEXDIR)/include/dcps/C++/SACPP" -I"." -I"$(VORTEXDIR)/examples/include" -I"$(VORTEXDIR)/examples"
+OBJEXT        = .o
+OUTPUT_OPTION = -o "$@"
+COMPILE.c     = $(CC) $(CFLAGS) $(CPPFLAGS) -c
+COMPILE.cc    = $(CXX) $(CCFLAGS) $(CPPFLAGS) -c
+LDFLAGS       = -L"." -L"$(VORTEXDIR)/lib" -Wl,-rpath,\$$ORIGIN -Wl,-rpath,\$$ORIGIN/$(VORTEXDIR)/lib
+CCC           = $(CXX)
+MAKEFILE      = Makefile.$(SAMPLENAME1)_types
+DEPENDENCIES  = $(MAKEFILE)
+LTARGETDIR    = ./
+CAT           = cat
+MV            = mv -f
+RM            = rm -rf
+CP            = cp -p
+NUL           = /dev/null
+MKDIR         = mkdir -p
+TESTDIRSTART  = test -d
+TESTDIREND    = ||
+TOUCH         = touch
+EXEEXT        = 
+LIBPREFIX     = lib
+LIBSUFFIX     = 
+GENFLAGS      = -O3 -DNDEBUG
+LDLIBS        = -l"dcpssacpp" -l"ddskernel" -ldl $(subst lib,-l,$(sort $(basename $(notdir $(wildcard /usr/lib/librt.so /lib/librt.so))))) -lpthread
+OBJS          = .obj$(CFG)/$(SAMPLENAME2)DataSplDcps$(OBJEXT) .obj$(CFG)/$(SAMPLENAME2)DataDcps_impl$(OBJEXT) .obj$(CFG)/$(SAMPLENAME2)Data$(OBJEXT) .obj$(CFG)/$(SAMPLENAME2)DataDcps$(OBJEXT)
+AREXT         = .a
+LIB           = $(LTARGETDIR)$(LIBPREFIX)$(SAMPLENAME1)_types$(LIBSUFFIX)$(AREXT)
+SOEXT         = .so
+SHTARGETDIR   = ./
+SHLIB         = $(SHTARGETDIR)$(LIBPREFIX)$(SAMPLENAME1)_types$(LIBSUFFIX)$(SOEXT)
+SHFLAGS       = -shared
+SRC           = $(SAMPLENAME2)DataSplDcps.cpp $(SAMPLENAME2)DataDcps_impl.cpp $(SAMPLENAME2)Data.cpp $(SAMPLENAME2)DataDcps.cpp
+LINK.cc       = $(LD) $(LDFLAGS)
+DYNAMICFLAGS  = -DOSPL_BUILDEXAMPLE_LIB
+EXPORTFLAGS   = $(DYNAMICFLAGS)
+
+#----------------------------------------------------------------------------
+#       Local targets
+#----------------------------------------------------------------------------
+
+all: $(SHLIB)
+
+$(SHLIB): $(OBJS)
+	@$(TESTDIRSTART) "$(SHTARGETDIR)" $(TESTDIREND) $(MKDIR) "$(SHTARGETDIR)"
+	$(LINK.cc) $(SHFLAGS) $(OBJS) $(LDLIBS) $(OUTPUT_OPTION)
+
+$(LIB): $(OBJS)
+	@$(TESTDIRSTART) "$(LTARGETDIR)" $(TESTDIREND) $(MKDIR) "$(LTARGETDIR)"
+	$(AR) $(ARFLAGS) $(LIB) $(OBJS) 
+
+GENERATED_DIRTY = $(SAMPLENAME2)DataDcps.h $(SAMPLENAME2)DataSplDcps.cpp $(SAMPLENAME2)DataDcps_impl.cpp $(SAMPLENAME2)Data.cpp $(SAMPLENAME2)DataDcps.cpp $(SAMPLENAME2)Data.h ccpp_$(SAMPLENAME2)Data.h $(SAMPLENAME2)DataDcps_impl.h $(SAMPLENAME2)DataSplDcps.h
+
+export DYLD_LIBRARY_PATH := $(DYLD_LIBRARY_PATH):$(VORTEXDIR)/bin:$(VORTEXDIR)/lib
+export LD_LIBRARY_PATH   := $(LD_LIBRARY_PATH):$(VORTEXDIR)/bin:$(VORTEXDIR)/lib
+export SHLIB_PATH        := $(SHLIB_PATH):$(VORTEXDIR)/bin:$(VORTEXDIR)/lib
+export LIBPATH           := $(LIBPATH):$(VORTEXDIR)/bin:$(VORTEXDIR)/lib
+export PATH              := $(PATH):$(VORTEXDIR)/bin:$(VORTEXDIR)/lib
+
+.NOTPARALLEL:
+$(SAMPLENAME2)DataDcps.h $(SAMPLENAME2)DataSplDcps.cpp $(SAMPLENAME2)DataDcps_impl.cpp $(SAMPLENAME2)Data.cpp $(SAMPLENAME2)DataDcps.cpp $(SAMPLENAME2)Data.h ccpp_$(SAMPLENAME2)Data.h $(SAMPLENAME2)DataDcps_impl.h $(SAMPLENAME2)DataSplDcps.h: ../idl/$(SAMPLENAME2)Data.idl
+	"$(VORTEXDIR)/bin/idlpp" -I "$(VORTEXDIR)/etc/idl" -l cpp ../idl/$(SAMPLENAME2)Data.idl
+
+.PRECIOUS: $(GENERATED_DIRTY)
+$(OBJS): $(GENERATED_DIRTY)
+
+generated: $(GENERATED_DIRTY)
+	@-:
+
+.obj$(CFG)/$(SAMPLENAME2)DataSplDcps$(OBJEXT): $(SAMPLENAME2)DataSplDcps.cpp
+	@$(TESTDIRSTART) ".obj$(CFG)/" $(TESTDIREND) $(MKDIR) ".obj$(CFG)/"
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) $(SAMPLENAME2)DataSplDcps.cpp
+
+.obj$(CFG)/$(SAMPLENAME2)DataDcps_impl$(OBJEXT): $(SAMPLENAME2)DataDcps_impl.cpp
+	@$(TESTDIRSTART) ".obj$(CFG)/" $(TESTDIREND) $(MKDIR) ".obj$(CFG)/"
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) $(SAMPLENAME2)DataDcps_impl.cpp
+
+.obj$(CFG)/$(SAMPLENAME2)Data$(OBJEXT): $(SAMPLENAME2)Data.cpp
+	@$(TESTDIRSTART) ".obj$(CFG)/" $(TESTDIREND) $(MKDIR) ".obj$(CFG)/"
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) $(SAMPLENAME2)Data.cpp
+
+.obj$(CFG)/$(SAMPLENAME2)DataDcps$(OBJEXT): $(SAMPLENAME2)DataDcps.cpp
+	@$(TESTDIRSTART) ".obj$(CFG)/" $(TESTDIREND) $(MKDIR) ".obj$(CFG)/"
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) $(SAMPLENAME2)DataDcps.cpp
+
+clean:
+	-$(RM) $(OBJS)
+
+realclean: clean
+	-$(RM) $(SHLIB) $(LIB)
+	-$(RM) $(GENERATED_DIRTY)
+	-$(RM) .obj$(CFG)/
+
+check-syntax:
+	$(COMPILE.cc) $(EXPORTFLAGS) $(CHK_SOURCES)
+

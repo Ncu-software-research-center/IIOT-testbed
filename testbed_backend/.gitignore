@@ -1,0 +1,10 @@
+# json file, pyc
+*.json
+*.pyc
+**/__pycache__/
+**/*.py[cod]
+**/*.log
+/.vscode
+/build
+test/loss_rate_report.csv
+test/ospl*

@@ -1,0 +1,30 @@
+/**
+ * @addtogroup testbedEmulation
+ */
+/** @{*/
+/** @file */
+module EmulationData
+{
+    struct Msg
+    {
+        string device_name;
+        long msg_id;
+        long prob_id;
+        string message;
+    };
+    #pragma keylist Msg device_name
+
+    struct ProbMsg
+    {
+        string src_device_name;
+        string dst_device_name;
+        long prob_id;
+        long received_point_sec;
+        long received_point_nanosec;
+        long sent_point_sec;
+        long sent_point_nanosec;
+    };
+    #pragma keylist ProbMsg src_device_name dst_device_name
+};
+
+/** @}*/
